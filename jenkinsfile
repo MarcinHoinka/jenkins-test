@@ -1,0 +1,25 @@
+stages {
+    stage('Test 1') {
+        steps {
+            echo "Hello world from ${prompt1}"
+        }
+    }
+    stage('Test 2'){
+        steps {
+            echo "Hello ${prompt2}. Working on ${env.JOB_NAME} from ${env.JENKINS_URL}."
+        }
+    }
+
+    stage('Test 3') {
+        steps {
+            script {
+                if (env.BRANCH_NAME == 'master') {
+                    echo 'I only execute on the master branch'
+                    }
+                    else {
+                        echo 'I execute elsewhere'
+                        }
+            }
+        }
+    }
+}
